@@ -1,0 +1,46 @@
+<br />
+
+<mat-card>
+  <mat-toolbar color="primary">Products List</mat-toolbar>
+
+      <table class="list" mat-table [dataSource]="courses$">
+
+        <ng-container matColumnDef="name">
+          <th *matHeaderCellDef>Car</th>
+          <td *matCellDef="let course">{{ course.name }}
+        </ng-container>
+
+        <ng-container matColumnDef="category">
+            <th *matHeaderCellDef>Product Category</th>
+            <td *matCellDef="let course">{{ course.category }}
+
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef>
+            <button mat-icon-button (click)="onAdd()">
+              <mat-icon>add</mat-icon>
+              </button>
+          </mat-header-cell>
+
+          <mat-cell *matCellDef="let course" class="action-column">
+            <button mat-icon-button (click)="onEdit(course)">
+            <mat-icon>edit</mat-icon>
+            </button>
+
+            <button mat-icon-button (click)="onDelete(course.id)" color="warn" aria-label="Delete">
+              <mat-icon>delete</mat-icon>
+            </button>
+
+            <a href=""> <mat-icon>shopping_cart</mat-icon></a>
+
+
+          </mat-cell>
+
+        </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </mat-card>
